@@ -103,7 +103,7 @@ def download_data_from_binance(symbol, from_date, to_date, output_filename, step
                                    columns=new_columns)
             data_df['timestamp'] = pd.to_datetime(data_df['timestamp'], unit='ms')
             data_df.set_index('timestamp', inplace=True)
-            data_df.to_csv(output_filename)
+            data_df.to_csv(output_filename,mode='a',header=not os.path.exists(output_filename))
 
         # move to next step of batches
         from_millis = step_millis
@@ -164,10 +164,10 @@ def append_binance_data(master_output_filename, concat_output_filename):
 
 
 if __name__ == '__main__':
-    from_date = '2019-11-16 00:00:00'
+    from_date = '2019-12-20 00:00:00'
     # to_date = time.strftime(fmt, time.localtime())
     # UTC time is 8 hrs ahead of PST
-    to_date = '2019-12-19 00:00:00'
+    to_date = '2019-12-31 00:00:00'
     symbol_list = ['LTCUSDT', 'ETHUSDT', 'BTCUSDT']
 
     for num, symbol in enumerate(symbol_list):
