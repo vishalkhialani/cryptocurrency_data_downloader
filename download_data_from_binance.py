@@ -17,8 +17,8 @@ columns_of_interest = ['open', 'high', 'low', 'close', 'volume']
 
 def init_mod():
     # refer: https://www.binance.com/en/support/articles/360002502072 for API keys
-    binance_api_key = "your api key here"
-    binance_api_secret = "your api secret here"
+    binance_api_key = "S5RhffyAkUef9znoMpvXdnCXrUsMXU8EPCnCazEGWgiBnb6SptvBsV31wozByaSK"
+    binance_api_secret = "sqJXZCjyHJ1U01VbCBdQXq1yU0V6s9Gpd0twpACdI4Blj035UGSdCq8iVXB6pVPX"
     binance_client = Client(api_key=binance_api_key, api_secret=binance_api_secret)
     global epoch
     epoch = datetime.utcfromtimestamp(0)
@@ -167,8 +167,8 @@ if __name__ == '__main__':
     from_date = '2019-11-16 00:00:00'
     # to_date = time.strftime(fmt, time.localtime())
     # UTC time is 8 hrs ahead of PST
-    to_date = '2019-11-19 00:00:00'
-    symbol_list = ['LTCUSD', 'ETHUSD', 'BTCUSDT']
+    to_date = '2019-12-19 00:00:00'
+    symbol_list = ['LTCUSDT', 'ETHUSDT', 'BTCUSDT']
 
     for num, symbol in enumerate(symbol_list):
         output_filename = '%s-binance-data.csv' % (symbol)
@@ -185,3 +185,5 @@ if __name__ == '__main__':
     master_output_filename = 'crypto_data_master_cleaned.csv'
     append_binance_data(master_output_filename, concat_output_filename)
     remove_dup_by_index(master_output_filename)
+
+#%%
